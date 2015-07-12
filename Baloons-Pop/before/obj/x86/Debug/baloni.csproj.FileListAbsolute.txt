@@ -1,0 +1,5 @@
+C:\Users\asus\Documents\Visual Studio 2013\Projects\Telerik Academy Homework\HQC Teamwork - Baloons-Pop\Baloons-Pop\Baloons-Pop-5\bin\Debug\ConsoleApplication1.exe
+C:\Users\asus\Documents\Visual Studio 2013\Projects\Telerik Academy Homework\HQC Teamwork - Baloons-Pop\Baloons-Pop\Baloons-Pop-5\bin\Debug\ConsoleApplication1.pdb
+C:\Users\asus\Documents\Visual Studio 2013\Projects\Telerik Academy Homework\HQC Teamwork - Baloons-Pop\Baloons-Pop\Baloons-Pop-5\obj\x86\Debug\baloni.csprojResolveAssemblyReference.cache
+C:\Users\asus\Documents\Visual Studio 2013\Projects\Telerik Academy Homework\HQC Teamwork - Baloons-Pop\Baloons-Pop\Baloons-Pop-5\obj\x86\Debug\ConsoleApplication1.exe
+C:\Users\asus\Documents\Visual Studio 2013\Projects\Telerik Academy Homework\HQC Teamwork - Baloons-Pop\Baloons-Pop\Baloons-Pop-5\obj\x86\Debug\ConsoleApplication1.pdb
