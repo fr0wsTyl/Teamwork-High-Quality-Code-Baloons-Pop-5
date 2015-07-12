@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 High-Quality Programming Code – Team Projects
 =============================================
 
@@ -119,6 +118,3 @@ Sample Refactoring Documentation for Project “Game 15”
 6.  Introduced class `ScoreBoard` and moved all related functionality in it.
 7.  Moved method `GenerateRandomNumber(int start, int end)` to separate class `RandomUtils`.
 8.  …
-=======
-# Teamwork-High-Quality-Code-Baloons-Pop-5
->>>>>>> 8a2acdc2c2cbe9fcd7167acff219a8e98ff06955
