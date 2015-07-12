@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="baloni.cs" />
-    <Compile Include="klasacia.cs" />
+    <Compile Include="Rating.cs" />
     <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
