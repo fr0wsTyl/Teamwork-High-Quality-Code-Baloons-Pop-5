@@ -9,21 +9,23 @@ namespace Balloons_Pops_game
         // Method for generating initial matrix with random numbers
         static byte[,] GenerateBalloons(byte rows, byte columns)
         {
+            // DimitarSD: Defensive programming - need to add validation for method arguments
             byte[,] balloonsMatrix = new byte[rows, columns];
-            Random randNumber = new Random();
+            Random randomNumber = new Random();
             for (byte row = 0; row < rows; row++)
             {
                 for (byte column = 0; column < columns; column++)
                 {
-                    byte numberToInsert = (byte)randNumber.Next(1, 5);
+                    byte numberToInsert = (byte)randomNumber.Next(1, 5);
                     balloonsMatrix[row, column] = numberToInsert;
                 }
             }
             return balloonsMatrix;
         }
 
-        static void checkLeft(byte[,] balloonsMatrix, int row, int column, int searchedItem)
+        static void CheckLeft(byte[,] balloonsMatrix, int row, int column, int searchedItem)
         {
+            // DimitarSD: Defensive programming - need to add validation for method arguments
             int newRow = row;
             int newColumn = column - 1;
             try
@@ -31,7 +33,7 @@ namespace Balloons_Pops_game
                 if (balloonsMatrix[newRow, newColumn] == searchedItem)
                 {
                     balloonsMatrix[newRow, newColumn] = 0;
-                    checkLeft(balloonsMatrix, newRow, newColumn, searchedItem);
+                    CheckLeft(balloonsMatrix, newRow, newColumn, searchedItem);
                 }
                 else
                 {
@@ -44,8 +46,9 @@ namespace Balloons_Pops_game
             }
         }
 
-        static void checkRight(byte[,] balloonsMatrix, int row, int column, int searchedItem)
+        static void CheckRight(byte[,] balloonsMatrix, int row, int column, int searchedItem)
         {
+            // DimitarSD: Defensive programming - need to add validation for method arguments
             int newRow = row;
             int newColumn = column + 1;
             try
@@ -53,27 +56,12 @@ namespace Balloons_Pops_game
                 if (balloonsMatrix[newRow, newColumn] == searchedItem)
                 {
                     balloonsMatrix[newRow, newColumn] = 0;
-                    checkRight(balloonsMatrix, newRow, newColumn, searchedItem);
+                    CheckRight(balloonsMatrix, newRow, newColumn, searchedItem);
                 }
-                else return;
-            }
-            catch (IndexOutOfRangeException)
-            {
-                return;
-            }
-        }
-        static void checkUp(byte[,] balloonsMatrix, int row, int column, int searchedItem)
-        {
-            int newRow = row + 1;
-            int newColumn = column;
-            try
-            {
-                if (balloonsMatrix[newRow, newColumn] == searchedItem)
+                else
                 {
-                    balloonsMatrix[newRow, newColumn] = 0;
-                    checkUp(balloonsMatrix, newRow, newColumn, searchedItem);
+                    return;
                 }
-                else return;
             }
             catch (IndexOutOfRangeException)
             {
@@ -81,8 +69,32 @@ namespace Balloons_Pops_game
             }
         }
 
-        static void checkDown(byte[,] balloonsMatrix, int row, int column, int searchedItem)
+        static void CheckUp(byte[,] balloonsMatrix, int row, int column, int searchedItem)
         {
+            // DimitarSD: Defensive programming - need to add validation for method arguments
+            int newRow = row + 1;
+            int newColumn = column;
+            try
+            {
+                if (balloonsMatrix[newRow, newColumn] == searchedItem)
+                {
+                    balloonsMatrix[newRow, newColumn] = 0;
+                    CheckUp(balloonsMatrix, newRow, newColumn, searchedItem);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return;
+            }
+        }
+
+        static void CheckDown(byte[,] balloonsMatrix, int row, int column, int searchedItem)
+        {
+            // DimitarSD: Defensive programming - need to add validation for method arguments
             int newRow = row - 1;
             int newColumn = column;
             try
@@ -90,9 +102,12 @@ namespace Balloons_Pops_game
                 if (balloonsMatrix[newRow, newColumn] == searchedItem)
                 {
                     balloonsMatrix[newRow, newColumn] = 0;
-                    checkDown(balloonsMatrix, newRow, newColumn, searchedItem);
+                    CheckDown(balloonsMatrix, newRow, newColumn, searchedItem);
                 }
-                else return;
+                else
+                {
+                    return;
+                }
             }
             catch (IndexOutOfRangeException)
             { 
@@ -110,10 +125,10 @@ namespace Balloons_Pops_game
             byte searchedTarget = matrixToModify[row, column];
             matrixToModify[row, column] = 0;
 
-            checkLeft(matrixToModify, row, column, searchedTarget);
-            checkRight(matrixToModify, row, column, searchedTarget);
-            checkUp(matrixToModify, row, column, searchedTarget);
-            checkDown(matrixToModify, row, column, searchedTarget);
+            CheckLeft(matrixToModify, row, column, searchedTarget);
+            CheckRight(matrixToModify, row, column, searchedTarget);
+            CheckUp(matrixToModify, row, column, searchedTarget);
+            CheckDown(matrixToModify, row, column, searchedTarget);
 
             return false;
         }

@@ -2,27 +2,28 @@ namespace Balloons_Pops_game
 {
     using System;
 
-    //Class for comparing scores between two players
+    // Class for comparing scores between two players
     public class Rating : IComparable<Rating>
     {
-        //Fields
-        public int value;
-        public string name;
+        // Fields
+        private int value;
+        private string name;
 
-        //Constructor for adding initial values
+        // Constructor for adding initial values
         public Rating(int value, string name)
         {
-            Value = value;
-            Name = name;
+            this.Value = value;
+            this.Name = name;
         }
 
-        //Properties
+        // Properties
         public int Value
         {
             get
             {
-                return value;
+                return this.value;
             }
+
             set
             {
                 this.value = value;
@@ -33,18 +34,19 @@ namespace Balloons_Pops_game
         {
             get
             {
-                return name;
+                return this.name;
             }
+
             set
             {
-                name = value;
+                this.name = value;
             }
         }
 
-        //CompareTo method for comparing with other 'Rating' object
+        // CompareTo method for comparing with other 'Rating' object
         public int CompareTo(Rating other)
         {
-            return Value.CompareTo(other.Value);
+            return this.Value.CompareTo(other.Value);
         }
     }
 }
