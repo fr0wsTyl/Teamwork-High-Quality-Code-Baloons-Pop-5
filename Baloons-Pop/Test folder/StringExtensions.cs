@@ -1,6 +1,6 @@
 using System;
 
-namespace ConsoleApplication1
+namespace BalloonsPops
 {
     static class StringExtensions
     {
@@ -9,43 +9,43 @@ namespace ConsoleApplication1
         //    return string.Format("");
         //}
 
-        public static bool signIfSkilled(this string[,] Chart, int points)
+        public static bool SignIfSkilled(this string[,] chart, int points)
         {
-            bool Skilled = false;
+            bool skilled = false;
             int worstMoves = 0;
             int worstMovesChartPosition = 0;
             for (int i = 0; i < 5; i++)
-            { 
-                if (Chart[i, 0] == null)
+            {
+                if (chart[i, 0] == null)
                 {
                     Console.WriteLine("Type in your name.");
                     string tempUserName = Console.ReadLine();
-                    Chart[i, 0] = points.ToString();
-                    Chart[i, 1] = tempUserName;
-                    Skilled = true;
+                    chart[i, 0] = points.ToString();
+                    chart[i, 1] = tempUserName;
+                    skilled = true;
                     break;
                 }
             }
-            if (Skilled == false) 
+            if (skilled == false)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    if (int.Parse(Chart[i, 0]) > worstMoves)
+                    if (int.Parse(chart[i, 0]) > worstMoves)
                     {
                         worstMovesChartPosition = i;
-                        worstMoves = int.Parse(Chart[i, 0]);
+                        worstMoves = int.Parse(chart[i, 0]);
                     }
                 }
             }
-            if (points < worstMoves && Skilled == false) 
+            if (points < worstMoves && skilled == false)
             {
                 Console.WriteLine("Type in your name.");
                 string tempUserName = Console.ReadLine();
-                Chart[worstMovesChartPosition, 0] = points.ToString();
-                Chart[worstMovesChartPosition, 1] = tempUserName;
-                Skilled = true;
+                chart[worstMovesChartPosition, 0] = points.ToString();
+                chart[worstMovesChartPosition, 1] = tempUserName;
+                skilled = true;
             }
-            return Skilled;
+            return skilled;
         }
     }
 }

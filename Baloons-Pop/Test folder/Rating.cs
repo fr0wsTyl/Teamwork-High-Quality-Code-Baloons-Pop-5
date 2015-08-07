@@ -1,22 +1,19 @@
-namespace Balloons_Pops_game
+namespace BalloonsPops
 {
     using System;
 
     // Class for comparing scores between two players
     public class Rating : IComparable<Rating>
     {
-        // Fields
         private int value;
         private string name;
-
-        // Constructor for adding initial values
+        
         public Rating(int value, string name)
         {
             this.Value = value;
             this.Name = name;
         }
-
-        // Properties
+        
         public int Value
         {
             get

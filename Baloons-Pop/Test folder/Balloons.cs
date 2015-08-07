@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using ConsoleApplication1;
 
-namespace Balloons_Pops_game
+namespace BalloonsPops
 {
     class Balloon
     {
@@ -115,7 +114,7 @@ namespace Balloons_Pops_game
             }
         }
 
-        static bool change(byte[,] matrixToModify, int row, int column)
+        static bool Change(byte[,] matrixToModify, int row, int column)
         {
             if (matrixToModify[row, column] == 0)
             {
@@ -133,10 +132,10 @@ namespace Balloons_Pops_game
             return false;
         }
 
-        static bool doit(byte[,] matrix)
+        static bool DoIt(byte[,] matrix)
         {
             bool isWinner = true;
-            Stack<byte> stek = new Stack<byte>();
+            Stack<byte> stack = new Stack<byte>();
             int columnLenght = matrix.GetLength(0);
             for (int j = 0; j < matrix.GetLength(1); j++)
             {
@@ -145,14 +144,14 @@ namespace Balloons_Pops_game
                     if (matrix[i, j] != 0)
                     {
                         isWinner = false;
-                        stek.Push(matrix[i, j]);
+                        stack.Push(matrix[i, j]);
                     }
                 }
                 for (int k = columnLenght - 1; (k >= 0); k--)
                 {
                     try
                     {
-                        matrix[k, j] = stek.Pop();
+                        matrix[k, j] = stack.Pop();
                     }
                     catch (Exception)
                     {
@@ -163,10 +162,10 @@ namespace Balloons_Pops_game
             return isWinner;
         }
 
-        static void sortAndPrintChartFive(string[,] tableToSort)
+        static void SortAndPrintChartFive(string[,] tableToSort)
         {
 
-            List<klasacia> klasirane = new List<klasacia>();
+            List<Rating> chart = new List<Rating>();
 
             for (int i = 0; i < 5; ++i)
             {
@@ -175,15 +174,15 @@ namespace Balloons_Pops_game
                     break;
                 }
 
-                klasirane.Add(new klasacia(int.Parse(tableToSort[i, 0]), tableToSort[i, 1]));
+                chart.Add(new Rating(int.Parse(tableToSort[i, 0]), tableToSort[i, 1]));
 
             }
 
-            klasirane.Sort();
+            chart.Sort();
             Console.WriteLine("---------TOP FIVE CHART-----------");
-            for (int i = 0; i < klasirane.Count; ++i)
+            for (int i = 0; i < chart.Count; ++i)
             {
-                klasacia slot = klasirane[i];
+                Rating slot = chart[i];
                 Console.WriteLine("{2}.   {0} with {1} moves.", slot.Name, slot.Value, i + 1);
             }
             Console.WriteLine("----------------------------------");
@@ -194,7 +193,7 @@ namespace Balloons_Pops_game
         static void Main(string[] args)
         {
             string[,] topFive = new string[5, 2];
-            byte[,] matrix = gen(5, 10);
+            byte[,] matrix = GenerateBalloons(5, 10);
 
             Console.Write("    ");
             for (byte column = 0; column < matrix.GetLongLength(1); column++)
@@ -244,7 +243,7 @@ namespace Balloons_Pops_game
                 switch (temp)
                 {
                     case "RESTART":
-                        matrix = gen(5, 10);
+                        matrix = GenerateBalloons(5, 10);
                         Console.Write("    ");
                         for (byte column = 0; column < matrix.GetLongLength(1); column++)
                         {
@@ -286,7 +285,7 @@ namespace Balloons_Pops_game
                         break;
 
                     case "TOP":
-                        sortAndPrintChartFive(topFive);
+                        SortAndPrintChartFive(topFive);
                         break;
 
                     default:
@@ -301,24 +300,24 @@ namespace Balloons_Pops_game
                             }
                             userColumn = int.Parse(temp[2].ToString());
 
-                            if (change(matrix, userRow, userColumn))
+                            if (Change(matrix, userRow, userColumn))
                             {
                                 Console.WriteLine("cannot pop missing ballon!");
                                 continue;
                             }
                             userMoves++;
-                            if (doit(matrix))
+                            if (DoIt(matrix))
                             {
                                 Console.WriteLine("Gratz ! You completed it in {0} moves.", userMoves);
-                                if (topFive.signIfSkilled(userMoves))
+                                if (topFive.SignIfSkilled(userMoves))
                                 {
-                                    sortAndPrintChartFive(topFive);
+                                    SortAndPrintChartFive(topFive);
                                 }
                                 else
                                 {
                                     Console.WriteLine("I am sorry you are not skillful enough for TopFive chart!");
                                 }
-                                matrix = gen(5, 10);
+                                matrix = GenerateBalloons(5, 10);
                                 userMoves = 0;
                             }
                             Console.Write("    ");
