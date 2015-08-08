@@ -3,6 +3,7 @@
 
 <h5>21.07.2015 - DimitarSD</h5>
 
+asdasdasdasdasdasd
 1. Refactoring Rating.cs
 	- Changed the access modifiers of the fields from **public** to **private**
 	- Added **this** when calling the properties in the constructor
