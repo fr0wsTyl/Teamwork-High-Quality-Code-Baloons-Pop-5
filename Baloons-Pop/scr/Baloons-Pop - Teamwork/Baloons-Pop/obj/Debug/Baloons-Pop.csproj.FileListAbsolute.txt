@@ -1,2 +1,1 @@
-C:\Users\asus\Desktop\Baloons-Pop - Teamwork\Baloons-Pop\bin\Debug\Baloons-Pop.exe.config
-C:\Users\Svetlio\Documents\GitHub\Teamwork-High-Quality-Code-Baloons-Pop-5\trunk\Baloons-Pop\scr\Baloons-Pop - Teamwork\Baloons-Pop\bin\Debug\Baloons-Pop.exe.config
+C:\Users\asus\Documents\Visual Studio 2013\Projects\Telerik Academy Homework\HQC Teamwork - Baloons-Pop\Baloons-Pop\scr\Baloons-Pop - Teamwork\Baloons-Pop\bin\Debug\Baloons-Pop.exe.config
