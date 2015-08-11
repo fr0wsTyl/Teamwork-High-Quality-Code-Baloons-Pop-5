@@ -1,6 +1,6 @@
 ﻿namespace BaloonsPop.Console
 {
-    class MainProgram
+    public class MainProgram
     {
         public static void Main()
         {
