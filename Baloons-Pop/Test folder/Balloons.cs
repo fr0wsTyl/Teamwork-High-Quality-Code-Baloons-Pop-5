@@ -5,7 +5,7 @@ namespace BalloonsPops
 {
     class Balloon
     {
-        // Method for generating initial matrix with random numbers
+        // Method for generating initial matrix (baloonsFieldMatrix) with random numbers
         static byte[,] GenerateBalloons(byte rows, byte columns)
         {
             // DimitarSD: Defensive programming - need to add validation for method arguments
@@ -132,30 +132,30 @@ namespace BalloonsPops
             return false;
         }
 
-        static bool DoIt(byte[,] matrix)
+        static bool CheckIfWinner(byte[,] baloonsFieldMatrix)
         {
             bool isWinner = true;
             Stack<byte> stack = new Stack<byte>();
-            int columnLenght = matrix.GetLength(0);
-            for (int j = 0; j < matrix.GetLength(1); j++)
+            int columnLenght = baloonsFieldMatrix.GetLength(0);
+            for (int j = 0; j < baloonsFieldMatrix.GetLength(1); j++)
             {
                 for (int i = 0; i < columnLenght; i++)
                 {
-                    if (matrix[i, j] != 0)
+                    if (baloonsFieldMatrix[i, j] != 0)
                     {
                         isWinner = false;
-                        stack.Push(matrix[i, j]);
+                        stack.Push(baloonsFieldMatrix[i, j]);
                     }
                 }
                 for (int k = columnLenght - 1; (k >= 0); k--)
                 {
                     try
                     {
-                        matrix[k, j] = stack.Pop();
+                        baloonsFieldMatrix[k, j] = stack.Pop();
                     }
                     catch (Exception)
                     {
-                        matrix[k, j] = 0;
+                        baloonsFieldMatrix[k, j] = 0;
                     }
                 }
             }
@@ -193,90 +193,90 @@ namespace BalloonsPops
         static void Main(string[] args)
         {
             string[,] topFive = new string[5, 2];
-            byte[,] matrix = GenerateBalloons(5, 10);
+            byte[,] baloonsFieldMatrix = GenerateBalloons(5, 10);
 
             Console.Write("    ");
-            for (byte column = 0; column < matrix.GetLongLength(1); column++)
+            for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1); column++)
             {
                 Console.Write(column + " ");
             }
 
             Console.Write("\n   ");
-            for (byte column = 0; column < matrix.GetLongLength(1) * 2 + 1; column++)
+            for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1) * 2 + 1; column++)
             {
                 Console.Write("-");
             }
 
             Console.WriteLine();
 
-            for (byte i = 0; i < matrix.GetLongLength(0); i++)
+            for (byte i = 0; i < baloonsFieldMatrix.GetLongLength(0); i++)
             {
                 Console.Write(i + " | ");
-                for (byte j = 0; j < matrix.GetLongLength(1); j++)
+                for (byte j = 0; j < baloonsFieldMatrix.GetLongLength(1); j++)
                 {
-                    if (matrix[i, j] == 0)
+                    if (baloonsFieldMatrix[i, j] == 0)
                     {
                         Console.Write("  ");
                         continue;
                     }
 
-                    Console.Write(matrix[i, j] + " ");
+                    Console.Write(baloonsFieldMatrix[i, j] + " ");
                 }
                 Console.Write("| ");
                 Console.WriteLine();
             }
 
             Console.Write("   ");     //some trinket stuff again
-            for (byte column = 0; column < matrix.GetLongLength(1) * 2 + 1; column++)
+            for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1) * 2 + 1; column++)
             {
                 Console.Write("-");
             }
             Console.WriteLine();
-            string temp = null;
+            string userInput = null;
             int userMoves = 0;
-            while (temp != "EXIT")
+            while (userInput != "EXIT")
             {
                 Console.WriteLine("Enter a row and column: ");
-                temp = Console.ReadLine();
-                temp = temp.ToUpper().Trim();
+                userInput = Console.ReadLine();
+                userInput = userInput.ToUpper().Trim();
 
-                switch (temp)
+                switch (userInput)
                 {
                     case "RESTART":
-                        matrix = GenerateBalloons(5, 10);
+                        baloonsFieldMatrix = GenerateBalloons(5, 10);
                         Console.Write("    ");
-                        for (byte column = 0; column < matrix.GetLongLength(1); column++)
+                        for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1); column++)
                         {
                             Console.Write(column + " ");
                         }
 
                         Console.Write("\n   ");
-                        for (byte column = 0; column < matrix.GetLongLength(1) * 2 + 1; column++)
+                        for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1) * 2 + 1; column++)
                         {
                             Console.Write("-");
                         }
 
                         Console.WriteLine();
 
-                        for (byte i = 0; i < matrix.GetLongLength(0); i++)
+                        for (byte i = 0; i < baloonsFieldMatrix.GetLongLength(0); i++)
                         {
                             Console.Write(i + " | ");
-                            for (byte j = 0; j < matrix.GetLongLength(1); j++)
+                            for (byte j = 0; j < baloonsFieldMatrix.GetLongLength(1); j++)
                             {
-                                if (matrix[i, j] == 0)
+                                if (baloonsFieldMatrix[i, j] == 0)
                                 {
                                     Console.Write("  ");
                                     continue;
                                 }
 
-                                Console.Write(matrix[i, j] + " ");
+                                Console.Write(baloonsFieldMatrix[i, j] + " ");
                             }
                             Console.Write("| ");
                             Console.WriteLine();
                         }
 
                         Console.Write("   ");     //some trinket stuff again
-                        for (byte column = 0; column < matrix.GetLongLength(1) * 2 + 1; column++)
+                        for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1) * 2 + 1; column++)
                         {
                             Console.Write("-");
                         }
@@ -289,24 +289,24 @@ namespace BalloonsPops
                         break;
 
                     default:
-                        if ((temp.Length == 3) && (temp[0] >= '0' && temp[0] <= '9') && (temp[2] >= '0' && temp[2] <= '9') && (temp[1] == ' ' || temp[1] == '.' || temp[1] == ','))
+                        if ((userInput.Length == 3) && (userInput[0] >= '0' && userInput[0] <= '9') && (userInput[2] >= '0' && userInput[2] <= '9') && (userInput[1] == ' ' || userInput[1] == '.' || userInput[1] == ','))
                         {
                             int userRow, userColumn;
-                            userRow = int.Parse(temp[0].ToString());
+                            userRow = int.Parse(userInput[0].ToString());
                             if (userRow > 4)
                             {
                                 Console.WriteLine("Wrong input ! Try Again ! ");
                                 continue;
                             }
-                            userColumn = int.Parse(temp[2].ToString());
+                            userColumn = int.Parse(userInput[2].ToString());
 
-                            if (Change(matrix, userRow, userColumn))
+                            if (Change(baloonsFieldMatrix, userRow, userColumn))
                             {
                                 Console.WriteLine("cannot pop missing ballon!");
                                 continue;
                             }
                             userMoves++;
-                            if (DoIt(matrix))
+                            if (CheckIfWinner(baloonsFieldMatrix))
                             {
                                 Console.WriteLine("Gratz ! You completed it in {0} moves.", userMoves);
                                 if (topFive.SignIfSkilled(userMoves))
@@ -317,42 +317,42 @@ namespace BalloonsPops
                                 {
                                     Console.WriteLine("I am sorry you are not skillful enough for TopFive chart!");
                                 }
-                                matrix = GenerateBalloons(5, 10);
+                                baloonsFieldMatrix = GenerateBalloons(5, 10);
                                 userMoves = 0;
                             }
                             Console.Write("    ");
-                            for (byte column = 0; column < matrix.GetLongLength(1); column++)
+                            for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1); column++)
                             {
                                 Console.Write(column + " ");
                             }
 
                             Console.Write("\n   ");
-                            for (byte column = 0; column < matrix.GetLongLength(1) * 2 + 1; column++)
+                            for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1) * 2 + 1; column++)
                             {
                                 Console.Write("-");
                             }
 
                             Console.WriteLine();
 
-                            for (byte i = 0; i < matrix.GetLongLength(0); i++)
+                            for (byte i = 0; i < baloonsFieldMatrix.GetLongLength(0); i++)
                             {
                                 Console.Write(i + " | ");
-                                for (byte j = 0; j < matrix.GetLongLength(1); j++)
+                                for (byte j = 0; j < baloonsFieldMatrix.GetLongLength(1); j++)
                                 {
-                                    if (matrix[i, j] == 0)
+                                    if (baloonsFieldMatrix[i, j] == 0)
                                     {
                                         Console.Write("  ");
                                         continue;
                                     }
 
-                                    Console.Write(matrix[i, j] + " ");
+                                    Console.Write(baloonsFieldMatrix[i, j] + " ");
                                 }
                                 Console.Write("| ");
                                 Console.WriteLine();
                             }
 
                             Console.Write("   ");     //some trinket stuff again
-                            for (byte column = 0; column < matrix.GetLongLength(1) * 2 + 1; column++)
+                            for (byte column = 0; column < baloonsFieldMatrix.GetLongLength(1) * 2 + 1; column++)
                             {
                                 Console.Write("-");
                             }
