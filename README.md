@@ -18,3 +18,10 @@
 	- Added blank line between **CheckUp()** and **CheckRight()** methods
 	- Renamed method name from **checkDown()** to **CheckDown()**
 	- Put **{** and **}** after **else** in **CheckRight()**, **CheckUp()** and **CheckDown()** methods
+
+<h5>11.08.2015 - alexizvely</h5>
+ 
+1. Refactoring Balloon.cs
+    - Renamed variable **temp** to **userInput** in **Main()** method
+    - Renamed variable **matrix** to **baloonsFieldMatrix** in **Main()** method and in **DoIt()** method
+    - Renamed method name from **DoIt()** to **CheckIfWinner()**    
