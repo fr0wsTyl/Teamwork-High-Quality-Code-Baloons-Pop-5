@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7CF5AAD5-0867-4A0C-951F-3E11DF13FBC1}</ProjectGuid>
+    <ProjectGuid>08c77334-fb94-41bc-af38-bdcd3a7eb07f</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Baloons_Pop</RootNamespace>
-    <AssemblyName>Baloons-Pop</AssemblyName>
+    <RootNamespace>BaloonsPop</RootNamespace>
+    <AssemblyName>BaloonsPop</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
