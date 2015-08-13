@@ -2,50 +2,50 @@ using System;
 
 namespace BalloonsPops
 {
-    static class StringExtensions
+    public static class StringExtensions
     {
         //public override string ToString()
         //{
         //    return string.Format("");
         //}
 
-        public static bool SignIfSkilled(this string[,] chart, int points)
+        public static bool CheckIfOneOfBestTopFiveScores(this string[,] topFiveChart, int userMoves)
         {
-            bool skilled = false;
-            int worstMoves = 0;
+            bool isTopFivePlayer = false;
+            int worstMovesCountInTopFiveChart = 0;
             int worstMovesChartPosition = 0;
             for (int i = 0; i < 5; i++)
             {
-                if (chart[i, 0] == null)
+                if (topFiveChart[i, 0] == null)
                 {
                     Console.WriteLine("Type in your name.");
                     string tempUserName = Console.ReadLine();
-                    chart[i, 0] = points.ToString();
-                    chart[i, 1] = tempUserName;
-                    skilled = true;
+                    topFiveChart[i, 0] = userMoves.ToString();
+                    topFiveChart[i, 1] = tempUserName;
+                    isTopFivePlayer = true;
                     break;
                 }
             }
-            if (skilled == false)
+            if (isTopFivePlayer == false)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    if (int.Parse(chart[i, 0]) > worstMoves)
+                    if (int.Parse(topFiveChart[i, 0]) > worstMovesCountInTopFiveChart)
                     {
                         worstMovesChartPosition = i;
-                        worstMoves = int.Parse(chart[i, 0]);
+                        worstMovesCountInTopFiveChart = int.Parse(topFiveChart[i, 0]);
                     }
                 }
             }
-            if (points < worstMoves && skilled == false)
+            if (userMoves < worstMovesCountInTopFiveChart && isTopFivePlayer == false)
             {
                 Console.WriteLine("Type in your name.");
                 string tempUserName = Console.ReadLine();
-                chart[worstMovesChartPosition, 0] = points.ToString();
-                chart[worstMovesChartPosition, 1] = tempUserName;
-                skilled = true;
+                topFiveChart[worstMovesChartPosition, 0] = userMoves.ToString();
+                topFiveChart[worstMovesChartPosition, 1] = tempUserName;
+                isTopFivePlayer = true;
             }
-            return skilled;
+            return isTopFivePlayer;
         }
     }
 }

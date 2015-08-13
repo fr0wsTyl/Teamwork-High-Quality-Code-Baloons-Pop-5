@@ -309,7 +309,7 @@ namespace BalloonsPops
                             if (CheckIfWinner(baloonsFieldMatrix))
                             {
                                 Console.WriteLine("Gratz ! You completed it in {0} moves.", userMoves);
-                                if (topFive.SignIfSkilled(userMoves))
+                                if (topFive.CheckIfOneOfBestTopFiveScores(userMoves))
                                 {
                                     SortAndPrintChartFive(topFive);
                                 }
