@@ -25,3 +25,13 @@
     - Renamed variable **temp** to **userInput** in **Main()** method
     - Renamed variable **matrix** to **baloonsFieldMatrix** in **Main()** method and in **DoIt()** method
     - Renamed method name from **DoIt()** to **CheckIfWinner()**    
+
+<h5>13.08.2015 - alexizvely</h5>
+ 
+1. Refactoring StringExtensions.cs
+    - Renamed method name from **SignIfSkilled()** to **CheckIfOneOfBestTopFiveScores()**    
+    - Renamed variable **skilled** to **isTopFivePlayer** in **CheckIfOneOfBestTopFiveScores()** method
+    - Renamed variable **worstMoves** to **worstMovesCountInTopFiveChart** in **CheckIfOneOfBestTopFiveScores()** method
+    - Renamed argument **points** to **userMoves** in **CheckIfOneOfBestTopFiveScores()** method
+    - Renamed argument **chart** to **topFiveChart** in **CheckIfOneOfBestTopFiveScores()** method
+    - Added access modifier of the class **StringExtensions** - **public**
